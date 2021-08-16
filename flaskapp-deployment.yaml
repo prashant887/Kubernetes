@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: flakapp-deployment
+   labels:
+     app: flaskapp
+
+spec: #specification for deployment
+  replicas: 1
+  selector:
+    matchLabels:
+     app: flaskapp
+  template:
+    metadata:
+     labels:
+      app: flaskapp
+    spec: #specification for pod
+      containers:
+       - name: flaskapp
+         image: prashant887/flaskimage:1.0
+         ports:
+           - containerPort: 5000
