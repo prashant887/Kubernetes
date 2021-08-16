@@ -1,0 +1,22 @@
+kubectl create deployment flaskapp-dep --image=prashant887/flaskimage:1.0 
+kubectl get deployments 
+kubectl get pods 
+kubectl logs <pod> 
+
+
+deployment yaml / service 
+
+kubectl describe service flaskapp-service 
+
+3 parts 
+1. Metadata 
+2. Specification 
+3. Status -> k8s generates based on status actual and desired
+
+
+all pod/image info are specifed inside spec/template
+
+spec-1 : deployment 
+spec-2 : container 
+
+Label and selectors
