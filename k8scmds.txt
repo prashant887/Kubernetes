@@ -3,7 +3,7 @@ kubectl get deployments
 kubectl get pods 
 kubectl logs <pod> 
 
-
+kubectl create -f ngix-deployment.yaml 
 deployment yaml / service 
 
 kubectl describe service flaskapp-service 
@@ -20,3 +20,10 @@ spec-1 : deployment
 spec-2 : container 
 
 Label and selectors
+
+kubectl create namespace <name> 
+namespace -> cluster inside cluster 
+
+ingress -> used to expose pods as external service via app-name/service-name then  ip/ports(internal service)
+
+helm -> package manager for k8s where yaml can be shipped for different deploymets
