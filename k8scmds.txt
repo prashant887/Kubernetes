@@ -27,3 +27,27 @@ namespace -> cluster inside cluster
 ingress -> used to expose pods as external service via app-name/service-name then  ip/ports(internal service)
 
 helm -> package manager for k8s where yaml can be shipped for different deploymets
+
+Kubernetes Services 
+pods have own ips , ips change everytime pods are created , services provides static ip address 
+- stable ipaddress
+- load balancing 
+- lose coupling 
+- with and within cluster 
+
+ClusterIP -> Default IP 
+Ingress access pods via service/ClusterIP  service has selector , which is equal to label in deployment
+access within pods alone , cant be accessed from outside 
+
+metadata->name in Service should match in ServiceName/backend in Ingress
+
+if a pod has multiple contianers , in service ports has to be defined with contianer names 
+
+Headless Service: Commuincate to one of the pod directly from outside , or pod communicate with in itself without services 
+DB/Staeful apps , for sync b/w master and slave pods  for direct access
+
+Setting ClusterIP:None , returns Pod IP address and not service IP , so that Pods are directly accessed
+
+ClusterIP -> Default , to communcate within cluset , internal service , no external traffic can access 
+NodePort -> Creates services accessable on static port on each workedr node in cluster , external traffic accessable on static port , no ingress is used , not secure 
+LoadBalancer -> in cloud 
