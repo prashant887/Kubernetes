@@ -51,3 +51,31 @@ Setting ClusterIP:None , returns Pod IP address and not service IP , so that Pod
 ClusterIP -> Default , to communcate within cluset , internal service , no external traffic can access 
 NodePort -> Creates services accessable on static port on each workedr node in cluster , external traffic accessable on static port , no ingress is used , not secure 
 LoadBalancer -> in cloud 
+
+
+Volumes 
+-----------
+i. Create Persistant Volume , its a common resource no namespace
+ii. Create Persistant Volume Claim namespace
+
+StorageClass is used to define if stroage has to dynamically created or developers has to define it bring in own storage, its provisioner of storage 
+
+Static Provising -> Cluster Admin creates PV
+Storage Class -> Volumes are provisioned , dynamic provising AWS , Stroage Class created by admin and use it in PVC
+
+if a pvc is deleted and new pvc is created , if pv was created as retained new pvc cant claim pv
+
+Retian policy 
+Retain -> Default 
+Recycl -> 
+Delete -> Deletes volume and data , host path should be always /tmp/<>
+
+Access Mode
+RWO -> Read by all Node , Write only by first node  
+RWM -> Read/Write by all nodes 
+RO -> Read only 
+
+
+kubectl patch pv <your-pv-name> -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'
+
+
